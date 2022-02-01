@@ -1,22 +1,25 @@
-import { LoginContainer } from "./styles";
+import { RegisterContainer } from "./styles";
 import {
   Button,
   Form,
   Input,
   StyledLink,
 } from "../../components/GlobalComponents";
+
 import Logo from "../../assets/logo.svg";
 
-export default function Login() {
+export default function Register() {
   return (
-    <LoginContainer>
+    <RegisterContainer>
       <img src={Logo} alt="MyWallet" />
       <Form>
+        <Input placeholder="Nome" />
         <Input placeholder="Email" />
         <Input placeholder="Senha" />
+        <Input placeholder="Confirmar a senha" />
         <Button>Entrar</Button>
-        <StyledLink to="/register">Primeira vez? Cadastre-se</StyledLink>
+        <StyledLink to="/">Já tem uma conta? Entre agora!</StyledLink>
       </Form>
-    </LoginContainer>
+    </RegisterContainer>
   );
 }

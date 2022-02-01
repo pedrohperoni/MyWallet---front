@@ -15,6 +15,12 @@ const Button = styled.button`
   font-size: 20px;
   line-height: 23.48px;
   font-weight: 700;
+
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export default Button;

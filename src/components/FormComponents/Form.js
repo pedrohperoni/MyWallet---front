@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-const LoginContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+const Form = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 
-  background-color: var(--purple);
+  margin: 24px 0 36px;
 `;
 
-export { LoginContainer };
+export default Form;

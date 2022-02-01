@@ -3,6 +3,7 @@ import TransactionButtonContainer from "./TransactionButtonContainer";
 import TransactionsContainer from "./TransactionsContainer";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
+import Header from "./Header";
 
 export {
   TransactionButton,
@@ -10,4 +11,5 @@ export {
   TransactionsContainer,
   Transaction,
   Balance,
+  Header,
 };

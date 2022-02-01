@@ -1,4 +1,3 @@
-import { RegisterContainer } from "./styles";
 import {
   Button,
   Form,
@@ -7,6 +6,7 @@ import {
 } from "../../components/GlobalComponents";
 
 import Logo from "../../assets/logo.svg";
+import { RegisterContainer } from "./styles";
 
 export default function Register() {
   return (

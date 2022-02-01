@@ -1,4 +1,3 @@
-import { LoginContainer } from "./styles";
 import {
   Button,
   Form,
@@ -6,6 +5,7 @@ import {
   StyledLink,
 } from "../../components/GlobalComponents";
 import Logo from "../../assets/logo.svg";
+import { LoginContainer } from "./styles";
 
 export default function Login() {
   return (

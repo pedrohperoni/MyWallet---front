@@ -11,6 +11,7 @@ const TransactionsContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `;
 
 export default TransactionsContainer;

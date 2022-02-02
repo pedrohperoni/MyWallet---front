@@ -12,8 +12,8 @@ export default function Login() {
     <LoginContainer>
       <img src={Logo} alt="MyWallet" />
       <Form>
-        <Input placeholder="Email" />
-        <Input placeholder="Senha" />
+        <Input type="email" name="email" placeholder="Email" required />
+        <Input typoe="password" name="password" placeholder="Senha" required />
         <Button>Entrar</Button>
         <StyledLink to="/register">Primeira vez? Cadastre-se</StyledLink>
       </Form>

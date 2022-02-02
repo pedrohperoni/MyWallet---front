@@ -13,8 +13,27 @@ import {
   IoAddCircleOutline,
 } from "react-icons/io5";
 import { Container } from "../../components/GlobalComponents";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [transactions, setTransactions] = useState([]);
+
+  const getTransactions = () => {
+    axios
+      .get("http://localhost:5000/transactions")
+      .then((res) => {
+        setTransactions([...res.data]);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  useEffect(() => {
+    getTransactions();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -24,47 +43,20 @@ export default function Home() {
         </Link>
       </Header>
       <TransactionsContainer>
-        <Transaction>
-          <span>
-            <span>23/01</span>
-            <p>Comida gato</p>
-          </span>
+        {transactions.length === 0 ? (
+          <p>Nada</p>
+        ) : (
+          transactions.map((transaction) => (
+            <Transaction>
+              <span>
+                <span>23/01</span>
+                <p>{transaction.description}</p>
+              </span>
 
-          <span>19,99</span>
-        </Transaction>
-        <Transaction>
-          <span>
-            <span>23/01</span>
-            <p>Comida gato</p>
-          </span>
-
-          <span>19,99</span>
-        </Transaction>
-        <Transaction>
-          <span>
-            <span>23/01</span>
-            <p>Comida gato</p>
-          </span>
-
-          <span>19,99</span>
-        </Transaction>
-        <Transaction>
-          <span>
-            <span>23/01</span>
-            <p>Comida gato</p>
-          </span>
-
-          <span>19,99</span>
-        </Transaction>
-        <Transaction>
-          <span>
-            <span>23/01</span>
-            <p>Comida gato</p>
-          </span>
-
-          <span>19,99</span>
-        </Transaction>
-
+              <span>{transaction.value}</span>
+            </Transaction>
+          ))
+        )}
         <Balance>
           <p>SALDO</p>
           <span>2000</span>

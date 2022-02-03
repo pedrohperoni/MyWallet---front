@@ -1,32 +1,43 @@
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import {
   Balance,
+  EmptyHistory,
   Header,
   Transaction,
   TransactionButton,
   TransactionButtonContainer,
   TransactionsContainer,
 } from "../../components/HomeComponents";
-import { Link } from "react-router-dom";
+
 import {
   IoExitOutline,
   IoRemoveCircleOutline,
   IoAddCircleOutline,
 } from "react-icons/io5";
 import { Container } from "../../components/GlobalComponents";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import TokenContext from "../../contexts/tokenContext";
 
 export default function Home() {
   const [transactions, setTransactions] = useState([]);
+  const { token } = useContext(TokenContext);
 
   const getTransactions = () => {
+    console.log("trying");
     axios
-      .get("http://localhost:5000/transactions")
+      .get("http://localhost:5000/transactions", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
+        console.log("deu certo");
+        console.log([...res.data]);
         setTransactions([...res.data]);
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log("erro front", err.response);
       });
   };
 
@@ -42,11 +53,14 @@ export default function Home() {
           <IoExitOutline color="white" size="30px" />
         </Link>
       </Header>
-      <TransactionsContainer>
-        {transactions.length === 0 ? (
-          <p>Nada</p>
-        ) : (
-          transactions.map((transaction) => (
+
+      {transactions.length === 0 ? (
+        <EmptyHistory>
+          <p>Não há registros de entrada ou saída</p>
+        </EmptyHistory>
+      ) : (
+        <TransactionsContainer>
+          {transactions.map((transaction) => (
             <Transaction>
               <span>
                 <span>23/01</span>
@@ -55,13 +69,13 @@ export default function Home() {
 
               <span>{transaction.value}</span>
             </Transaction>
-          ))
-        )}
-        <Balance>
-          <p>SALDO</p>
-          <span>2000</span>
-        </Balance>
-      </TransactionsContainer>
+          ))}
+          <Balance>
+            <p>SALDO</p>
+            <span>2000</span>
+          </Balance>
+        </TransactionsContainer>
+      )}
 
       <TransactionButtonContainer>
         <Link to="/in-transaction">

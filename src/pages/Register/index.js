@@ -25,7 +25,7 @@ export default function Register() {
     console.log(email, password, confirmPassword, name);
 
     axios
-      .post("http://localhost:5000/register", {
+      .post("http://localhost:5000/auth/sign-up", {
         name,
         email,
         password,
@@ -37,7 +37,7 @@ export default function Register() {
       })
       .catch((error) => {
         console.log(error.response);
-        alert("errou");
+        alert("erro no submit do form");
       });
   }
 

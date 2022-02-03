@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Button,
   Container,
@@ -8,31 +8,42 @@ import {
 } from "../../components/GlobalComponents";
 import { Header } from "../../components/HomeComponents";
 import { useNavigate } from "react-router";
+import TokenContext from "../../contexts/tokenContext";
 
 export default function IncomingTransaction() {
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
 
+  const { token } = useContext(TokenContext);
+
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(description, value);
+    console.log(description, value, token);
 
     axios
-      .post("http://localhost:5000/transactions", {
-        user: "Pedro",
-        description,
-        value,
-        type: "incoming",
-      })
+      .post(
+        "http://localhost:5000/transactions",
+        {
+          user: "Pedro",
+          description,
+          value,
+          type: "incoming",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         navigate("/home");
       })
       .catch((error) => {
         console.log(error.response);
-        alert("errou");
+        alert("erro ao criar transacao");
       });
   }
 

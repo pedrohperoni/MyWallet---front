@@ -4,6 +4,7 @@ import TransactionsContainer from "./TransactionsContainer";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
 import Header from "./Header";
+import EmptyHistory from "./EmptyHistory";
 
 export {
   TransactionButton,
@@ -12,4 +13,5 @@ export {
   Transaction,
   Balance,
   Header,
+  EmptyHistory,
 };

@@ -6,9 +6,11 @@ import {
   Form,
   Input,
 } from "../../components/GlobalComponents";
+import { IoHomeOutline } from "react-icons/io5";
 import { Header } from "../../components/HomeComponents";
 import { useNavigate } from "react-router";
 import TokenContext from "../../contexts/tokenContext";
+import { Link } from "react-router-dom";
 
 export default function IncomingTransaction() {
   const [description, setDescription] = useState("");
@@ -51,6 +53,9 @@ export default function IncomingTransaction() {
     <Container>
       <Header>
         <h1>Nova entrada </h1>
+        <Link to="/home">
+          <IoHomeOutline color="white" size="30px" />
+        </Link>
       </Header>
       <Form onSubmit={handleSubmit}>
         <Input

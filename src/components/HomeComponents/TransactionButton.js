@@ -14,6 +14,10 @@ const TransactionButton = styled.div`
   justify-content: space-between;
   padding: 10px;
 
+  &:hover{
+     opacity:0.8;
+  }
+
   p{
      color: var(--white)
      font-size: 17px;

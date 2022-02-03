@@ -61,7 +61,7 @@ export default function Home() {
       ) : (
         <TransactionsContainer>
           {transactions.map((transaction) => (
-            <Transaction>
+            <Transaction key={transaction._id}>
               <span>
                 <span>23/01</span>
                 <p>{transaction.description}</p>

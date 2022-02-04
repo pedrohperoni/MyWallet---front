@@ -6,8 +6,8 @@ const Balance = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  background-color: var(--white);
-  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
 
   p {
     color: var(--black);

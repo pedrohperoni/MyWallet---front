@@ -15,6 +15,18 @@ const Transaction = styled.div`
     color: var(--gray);
     font-size: 16px;
     line-height: 19px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 50px;
+    width: 10%;
+  }
+
+  span:last-of-type {
+    justify-content: left;
+    text-overflow: ellipsis;
+    max-width: 20%;
+    color: ${(props) => (props.type ? "var(--green)" : "var(--red)")};
   }
 
   p {
@@ -22,7 +34,10 @@ const Transaction = styled.div`
     line-height: 19px;
     color: var(--black);
     align-self: baseline;
-    margin-left: 12px;
+    margin: 0 5px 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 60%;
   }
 `;
 

@@ -8,6 +8,7 @@ import Logo from "../../assets/logo.svg";
 import { LoginContainer } from "./styles";
 import { useContext, useState } from "react";
 import TokenContext from "../../contexts/tokenContext";
+import UserContext from "../../contexts/userContext";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -16,6 +17,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const { setToken } = useContext(TokenContext);
+  const { setUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -29,7 +31,9 @@ export default function Login() {
         password,
       })
       .then((response) => {
-        setToken(response.data);
+        console.log("response", response);
+        setToken(response.data.token);
+        setUser(response.data.user);
         navigate("/home");
       })
       .catch((error) => {

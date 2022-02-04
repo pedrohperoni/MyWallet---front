@@ -4,6 +4,7 @@ import {
   Button,
   Container,
   Form,
+  FormWarning,
   Input,
 } from "../../components/GlobalComponents";
 import { IoHomeOutline } from "react-icons/io5";
@@ -15,20 +16,38 @@ import { Link } from "react-router-dom";
 export default function IncomingTransaction() {
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
+  const [valueValidation, setValueValidation] = useState(false);
+  const [descriptionValidation, setDescriptionValidation] = useState(false);
 
   const { token } = useContext(TokenContext);
 
   const navigate = useNavigate();
 
+  const handleValueChange = (e) => {
+    setValue(e.target.value);
+    if (/^-?[0-9]+(?:\.[0-9]{2})?$/.test(e.target.value)) {
+      setValueValidation(true);
+    } else {
+      setValueValidation(false);
+    }
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+    if (/^\w+(?:\s+\w+)*$/.test(e.target.value)) {
+      setDescriptionValidation(true);
+    } else {
+      setDescriptionValidation(false);
+    }
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(description, value, token);
 
     axios
       .post(
         "http://localhost:5000/transactions",
         {
-          user: "Pedro",
           description,
           value,
           type: "incoming",
@@ -52,7 +71,7 @@ export default function IncomingTransaction() {
   return (
     <Container>
       <Header>
-        <h1>Nova entrada </h1>
+        <span>Nova entrada </span>
         <Link to="/home">
           <IoHomeOutline color="white" size="30px" />
         </Link>
@@ -63,18 +82,36 @@ export default function IncomingTransaction() {
           name="value"
           required
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleValueChange}
           placeholder="Valor"
         ></Input>
+        {/^-?[0-9]+(?:\.[0-9]{2})?$/.test(value) || value === "" ? (
+          ""
+        ) : (
+          <FormWarning>Numero inteiro ou com duas casas decimais!</FormWarning>
+        )}
         <Input
           type="text"
           name="description"
           required
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleDescriptionChange}
           placeholder="Descrição"
         ></Input>
-        <Button>Salvar entrada</Button>
+        {/^\w+(?:\s+\w+)*$/.test(description) || description === "" ? (
+          ""
+        ) : (
+          <FormWarning>
+            A descrição deve conter apenas letras e numeros
+          </FormWarning>
+        )}
+        <Button
+          type="button"
+          onClick={handleSubmit}
+          enabled={valueValidation && descriptionValidation}
+        >
+          Salvar entrada
+        </Button>
       </Form>
     </Container>
   );

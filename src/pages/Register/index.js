@@ -41,6 +41,8 @@ export default function Register() {
       });
   }
 
+  console.log(email);
+
   return (
     <RegisterContainer>
       <img src={Logo} alt="MyWallet" />
@@ -53,13 +55,18 @@ export default function Register() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        {/^[a-zA-Z\s]*$/.test(name) ? (
+          ""
+        ) : (
+          <FormWarning>Seu nome deve conter apenas letras.</FormWarning>
+        )}
         <Input
           type="email"
           name="email"
           placeholder="Email"
           required
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.toLowerCase())}
         />
         <Input
           type="password"

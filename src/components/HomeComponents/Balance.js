@@ -18,7 +18,7 @@ const Balance = styled.div`
   }
 
   span {
-    color: var(--green);
+    color: ${(props) => (props.balance ? "var(--green)" : "var(--red)")};
     font-size: 17px;
     line-height: 20px;
     margin: 0 12px;

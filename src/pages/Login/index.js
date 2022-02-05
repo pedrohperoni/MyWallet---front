@@ -1,6 +1,7 @@
 import {
   Button,
   Form,
+  FormWarning,
   Input,
   StyledLink,
 } from "../../components/GlobalComponents";
@@ -15,6 +16,7 @@ import axios from "axios";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
 
   const { setToken } = useContext(TokenContext);
   const { setUser } = useContext(UserContext);
@@ -38,7 +40,10 @@ export default function Login() {
       })
       .catch((error) => {
         console.log(error.response);
-        alert("erro no submit do form");
+        setLoginError(true);
+        setInterval(() => {
+          setLoginError(false);
+        }, 2000);
       });
   }
 
@@ -63,7 +68,14 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <Button type="submit">Entrar</Button>
+        <Button type="button" onClick={handleSubmit} enabled={!loginError}>
+          Entrar
+        </Button>
+        {loginError ? (
+          <FormWarning>Nome de usuário ou senha incorreta</FormWarning>
+        ) : (
+          ""
+        )}
         <StyledLink to="/register">Primeira vez? Cadastre-se</StyledLink>
       </Form>
     </LoginContainer>

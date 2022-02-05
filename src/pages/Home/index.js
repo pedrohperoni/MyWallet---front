@@ -45,6 +45,8 @@ export default function Home() {
       progress: undefined,
     });
 
+  let newTransactions = [];
+
   const getTransactions = () => {
     axios
       .get("http://localhost:5000/transactions", {
@@ -53,11 +55,12 @@ export default function Home() {
         },
       })
       .then((res) => {
-        console.log([...res.data]);
+        console.log("recebido", [...res.data]);
         setTransactions([...res.data]);
+        newTransactions = [...res.data];
         getBalance();
       })
-      .catch((err) => {
+      .catch((error) => {
         notify();
         setShowOverlay(true);
         setTimeout(() => {
@@ -67,12 +70,13 @@ export default function Home() {
   };
 
   function getBalance() {
-    if (transactions.length > 0) {
+    console.log("getBalance", newTransactions.length);
+    if (newTransactions.length > 0) {
       let sum = 0;
-      for (let i = 0; i < transactions.length; i++) {
-        transactions[i].type === "outgoing"
-          ? (sum -= parseInt(transactions[i].value))
-          : (sum += parseInt(transactions[i].value));
+      for (let i = 0; i < newTransactions.length; i++) {
+        newTransactions[i].type === "outgoing"
+          ? (sum -= parseInt(newTransactions[i].value))
+          : (sum += parseInt(newTransactions[i].value));
       }
       setBalance(sum);
     }
@@ -122,14 +126,14 @@ export default function Home() {
                 key={transaction._id}
                 type={transaction.type === "incoming"}
               >
-                <span>23/01</span>
+                <span>{transaction.date}</span>
                 <p>{transaction.description}</p>
                 <span>{transaction.value}</span>
               </Transaction>
             ))}
           </TransactionBox>
 
-          <Balance>
+          <Balance balance={balance >= 0 ? true : false}>
             <p>SALDO</p>
             <span>{balance}</span>
           </Balance>

@@ -43,7 +43,7 @@ export default function IncomingTransaction() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    const date = new Date().toISOString().slice(5, 10);
     axios
       .post(
         "http://localhost:5000/transactions",
@@ -51,6 +51,7 @@ export default function IncomingTransaction() {
           description,
           value,
           type: "outgoing",
+          date,
         },
         {
           headers: {

@@ -18,7 +18,28 @@ export default function Register() {
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [nameValidation, setNameValidation] = useState(false);
+  const [emailValidation, setEmailValidation] = useState(false);
+
   const navigate = useNavigate();
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    if (/^[a-zA-Z\s]*$/.test(e.target.value)) {
+      setNameValidation(true);
+    } else {
+      setNameValidation(false);
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value.toLowerCase());
+    if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(e.target.value.toLowerCase())) {
+      setEmailValidation(true);
+    } else {
+      setEmailValidation(false);
+    }
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,8 +62,6 @@ export default function Register() {
       });
   }
 
-  console.log(email);
-
   return (
     <RegisterContainer>
       <img src={Logo} alt="MyWallet" />
@@ -53,7 +72,7 @@ export default function Register() {
           placeholder="Nome"
           required
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleNameChange}
         />
         {/^[a-zA-Z\s]*$/.test(name) ? (
           ""
@@ -66,8 +85,14 @@ export default function Register() {
           placeholder="Email"
           required
           value={email}
-          onChange={(e) => setEmail(e.target.value.toLowerCase())}
+          onChange={handleEmailChange}
         />
+        {/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.toLowerCase()) ||
+        email === "" ? (
+          ""
+        ) : (
+          <FormWarning>Insira um e-mail num formato válido!</FormWarning>
+        )}
         <Input
           type="password"
           name="password"
@@ -76,6 +101,12 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {password.length > 3 || password.length === 0 ? (
+          ""
+        ) : (
+          <FormWarning>Sua senha deve ter mais de 3 carcteres!</FormWarning>
+        )}
+
         <Input
           type="password"
           name="confirmPassword"
@@ -90,7 +121,18 @@ export default function Register() {
           <FormWarning>As senhas devem ser iguais!</FormWarning>
         )}
 
-        <Button type="submit">Entrar</Button>
+        <Button
+          type="button"
+          onClick={handleSubmit}
+          enabled={
+            nameValidation &&
+            emailValidation &&
+            password === confirmPassword &&
+            password.length > 3
+          }
+        >
+          Registrar
+        </Button>
         <StyledLink to="/">Já tem uma conta? Entre agora!</StyledLink>
       </Form>
     </RegisterContainer>

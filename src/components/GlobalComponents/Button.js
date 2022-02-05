@@ -8,6 +8,7 @@ const Button = styled.button`
   width: 326px;
   height: 46px;
   border-radius: 5px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

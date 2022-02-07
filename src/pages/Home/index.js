@@ -47,6 +47,27 @@ export default function Home() {
 
   let newTransactions = [];
 
+  const getTransactions = () => {
+    axios
+      .get("http://localhost:5000/transactions", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setTransactions([...res.data]);
+
+        getBalance(res);
+      })
+      .catch((error) => {
+        notify();
+        setShowOverlay(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 4000);
+      });
+  };
+
   function getBalance(res) {
     newTransactions = [...res.data];
     if (newTransactions.length > 0) {
@@ -61,26 +82,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const getTransactions = () => {
-      axios
-        .get("http://localhost:5000/transactions", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setTransactions([...res.data]);
-
-          getBalance(res);
-        })
-        .catch((error) => {
-          notify();
-          setShowOverlay(true);
-          setTimeout(() => {
-            navigate("/");
-          }, 4000);
-        });
-    };
     getTransactions();
   }, []);
 

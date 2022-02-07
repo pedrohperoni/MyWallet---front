@@ -25,7 +25,6 @@ export default function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password);
 
     axios
       .post("http://localhost:5000/auth/sign-in", {
@@ -33,13 +32,11 @@ export default function Login() {
         password,
       })
       .then((response) => {
-        console.log("response", response);
         setToken(response.data.token);
         setUser(response.data.user);
         navigate("/home");
       })
       .catch((error) => {
-        console.log(error.response);
         setLoginError(true);
         setInterval(() => {
           setLoginError(false);

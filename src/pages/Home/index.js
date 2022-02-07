@@ -47,30 +47,7 @@ export default function Home() {
 
   let newTransactions = [];
 
-  const getTransactions = () => {
-    axios
-      .get("http://localhost:5000/transactions", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log("recebido", [...res.data]);
-        setTransactions([...res.data]);
-        newTransactions = [...res.data];
-        getBalance();
-      })
-      .catch((error) => {
-        notify();
-        setShowOverlay(true);
-        setTimeout(() => {
-          navigate("/");
-        }, 4000);
-      });
-  };
-
   function getBalance() {
-    console.log("getBalance", newTransactions.length);
     if (newTransactions.length > 0) {
       let sum = 0;
       for (let i = 0; i < newTransactions.length; i++) {
@@ -83,8 +60,28 @@ export default function Home() {
   }
 
   useEffect(() => {
+    const getTransactions = () => {
+      axios
+        .get("http://localhost:5000/transactions", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setTransactions([...res.data]);
+          newTransactions = [...res.data];
+          getBalance();
+        })
+        .catch((error) => {
+          notify();
+          setShowOverlay(true);
+          setTimeout(() => {
+            navigate("/");
+          }, 4000);
+        });
+    };
     getTransactions();
-  }, [getTransactions]);
+  }, []);
 
   return (
     <Container>

@@ -87,7 +87,7 @@ export default function Register() {
           value={email}
           onChange={handleEmailChange}
         />
-        {/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.toLowerCase()) ||
+        {/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.toLowerCase()) ||
         email === "" ? (
           ""
         ) : (

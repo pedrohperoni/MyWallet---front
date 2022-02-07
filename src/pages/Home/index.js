@@ -84,7 +84,7 @@ export default function Home() {
 
   useEffect(() => {
     getTransactions();
-  }, []);
+  }, [getTransactions]);
 
   return (
     <Container>

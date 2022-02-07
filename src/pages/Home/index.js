@@ -47,7 +47,8 @@ export default function Home() {
 
   let newTransactions = [];
 
-  function getBalance() {
+  function getBalance(res) {
+    newTransactions = [...res.data];
     if (newTransactions.length > 0) {
       let sum = 0;
       for (let i = 0; i < newTransactions.length; i++) {
@@ -69,8 +70,8 @@ export default function Home() {
         })
         .then((res) => {
           setTransactions([...res.data]);
-          newTransactions = [...res.data];
-          getBalance();
+
+          getBalance(res);
         })
         .catch((error) => {
           notify();

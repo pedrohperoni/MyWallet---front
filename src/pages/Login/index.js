@@ -58,7 +58,7 @@ export default function Login() {
         />
 
         <Input
-          typoe="password"
+          type="password"
           name="password"
           placeholder="Senha"
           value={password}

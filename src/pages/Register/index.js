@@ -46,7 +46,7 @@ export default function Register() {
     console.log(email, password, confirmPassword, name);
 
     axios
-      .post("http://localhost:5000/auth/sign-up", {
+      .post("https://tellawym.herokuapp.com/auth/sign-up", {
         name,
         email,
         password,

@@ -27,7 +27,7 @@ export default function Login() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/auth/sign-in", {
+      .post("https://tellawym.herokuapp.com/auth/sign-in", {
         email,
         password,
       })

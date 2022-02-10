@@ -47,7 +47,7 @@ export default function IncomingTransaction() {
 
     axios
       .post(
-        "http://localhost:5000/transactions",
+        "https://tellawym.herokuapp.com/transactions",
         {
           description,
           value,

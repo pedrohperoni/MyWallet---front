@@ -49,7 +49,7 @@ export default function Home() {
 
   const getTransactions = () => {
     axios
-      .get("http://localhost:5000/transactions", {
+      .get("https://tellawym.herokuapp.com/transactions", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -46,7 +46,7 @@ export default function IncomingTransaction() {
     const date = new Date().toISOString().slice(5, 10);
     axios
       .post(
-        "http://localhost:5000/transactions",
+        "https://tellawym.herokuapp.com/transactions",
         {
           description,
           value,

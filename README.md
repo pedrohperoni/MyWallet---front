@@ -4,12 +4,12 @@
     <img src="https://raw.githubusercontent.com/pedrohperoni/MyWallet-front/main/github/logo.png" alt="Logo">
 
   </a>
+   💰 <h3 align="center">A simple fullstack application to keep track of your finances, built using React and MongoDB</h3>
   
-  <h3 align="center">MyWallet</h3>
-  <h4 align="center">Live App -> https://tellaw-ym.vercel.app/ </h4>
-  <h4 align="center">This project has a back-end repository -> https://github.com/pedrohperoni/MyWallet-back/</h4>
+  <p align="center">Live App -> https://tellaw-ym.vercel.app/
+</br>This project has a back-end repository -> https://github.com/pedrohperoni/MyWallet-back/</p>
   
- 💰 A simple fullstack application to keep track of your finances, built using React and MongoDB
+
 
 ## Project Status
 This project is fully functional but some features can be added, such as the option to edit and delete each entry and a weekly/monthly balance graph
@@ -17,7 +17,9 @@ This project is fully functional but some features can be added, such as the opt
 ## Technologies Used
 
 * [React](https://reactjs.org/)
+* [NodeJS](https://nodejs.org/en/)
 * [MongoDB](https://www.mongodb.com/)
+* [Styled-Components](https://styled-components.com/)
 
 
 ## Demo

@@ -1,37 +1,52 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
+  <a href="https://github.com/pedrohperoni/MyWallet-front">
+    <img src="https://raw.githubusercontent.com/pedrohperoni/MyWallet-front/main/github/logo.png" alt="Logo">
+
+  </a>
+  
+  <h3 align="center">MyWallett</h3>
+  <h4 align="center">Live App -> https://tellaw-ym.vercel.app/ </h4>
+  <h4 align="center">This project has a back-end repository -> https://github.com/pedrohperoni/MyWallet-back/</h4>
+  
+ 💰 A simple fullstack application to keep track of your finances, built using React and MongoDB
+
+## Project Status
+This project is fully functional but some features can be added, such as the option to edit and delete each entry and a weekly/monthly balance graph
+
+## Technologies Used
+
+* [React](https://reactjs.org/)
+* [MongoDB](https://www.mongodb.com/)
+
+
+## Demo
+<p float="left" align="center">
+<img src="https://raw.githubusercontent.com/pedrohperoni/MyWallet-front/main/github/mywallet.gif" alt="ss">
+</p>
+
+
+## Installation and Setup Instructions
+
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+
+Installation:
+
+`npm install`  
+
+To Run Test Suite:  
+
+`npm test`  
+
+To Start Server:
+
+`npm start`  
+
+To Visit App:
+
+`localhost:3000` 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 

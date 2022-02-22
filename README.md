@@ -5,7 +5,7 @@
 
   </a>
   
-  <h3 align="center">MyWallett</h3>
+  <h3 align="center">MyWallet</h3>
   <h4 align="center">Live App -> https://tellaw-ym.vercel.app/ </h4>
   <h4 align="center">This project has a back-end repository -> https://github.com/pedrohperoni/MyWallet-back/</h4>
   

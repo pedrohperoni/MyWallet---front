@@ -8,6 +8,7 @@
   <h3 align="center">MyWallet</h3>
   <h4 align="center">Live App -> https://tellaw-ym.vercel.app/ </h4>
   <h4 align="center">This project has a back-end repository -> https://github.com/pedrohperoni/MyWallet-back/</h4>
+  [Google](https://www.google.com)
   
  💰 A simple fullstack application to keep track of your finances, built using React and MongoDB
 
@@ -22,7 +23,7 @@ This project is fully functional but some features can be added, such as the opt
 
 ## Demo
 <p float="left" align="center">
-<img src="https://raw.githubusercontent.com/pedrohperoni/MyWallet-front/main/github/mywallet.gif" alt="ss">
+<img src="https://raw.githubusercontent.com/pedrohperoni/MyWallet-front/main/github/mywallet.gif" alt="ss" height="350">
 </p>
 
 
